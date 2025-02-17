@@ -1,22 +1,20 @@
 import TextField from "@mui/material/TextField";
 import Navbar from "../navbar/navbar";
-import "./signup.css";
+import "./signin.css";
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router";
 import validator from "validator";
 
-function Signup() {
+function Signin() {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [team, setTeam] = useState("");
   const [alert, setAlert] = useState("");
 
-  function handleSignUp(e) {
+  function handleSignIn(e) {
     e.preventDefault();
-    if (name && email && password && team != "") {
+    if (email && password != "") {
       const passwordRegex =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
       /*✅ 8 characters (minimum)
@@ -42,20 +40,10 @@ function Signup() {
     <>
       <div>
         <Navbar />
-        <div className="signupPage">
-          <div className="signupForm">
-            <h4>Sign Up</h4>
+        <div className="signinPage">
+          <div className="signinForm">
+            <h4>Sign In</h4>
             {alert === "" ? <></> : <Alert severity="warning">{alert}</Alert>}
-            <TextField
-              id="name"
-              label="Name"
-              variant="standard"
-              type="text"
-              onChange={(e) => {
-                setName(e.target.value);
-                setAlert("");
-              }}
-            />
             <TextField
               id="email"
               label="Email"
@@ -76,21 +64,11 @@ function Signup() {
                 setAlert("");
               }}
             />
-            <TextField
-              id="password"
-              label="Team"
-              variant="standard"
-              type="text"
-              onChange={(e) => {
-                setTeam(e.target.value);
-                setAlert("");
-              }}
-            />
             <button
               onClick={(e) => {
-                handleSignUp(e);
+                handleSignIn(e);
               }}
-              className="signupButton"
+              className="signinButton"
             >
               Submit
             </button>
@@ -100,4 +78,4 @@ function Signup() {
     </>
   );
 }
-export default Signup;
+export default Signin;
