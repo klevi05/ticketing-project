@@ -1,31 +1,32 @@
-.signupPage{
-    height: 90vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.signupPage {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.signupForm{
-    height: 70vh;
-    border-radius: 10%;
-    padding: 5rem;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    row-gap: 1rem;
+.signupForm {
+  height: 70vh;
+  width: 25%;
+  border-radius: 10%;
+  padding: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 1rem;
 }
-.signupButton{
-    margin-top: 1rem;
-    background-color: none;
-    background-color: white;
-    border: none;
-    border-radius: 10%;
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+.signupButton {
+  margin-top: 1rem;
+  background-color: none;
+  background-color: white;
+  border: none;
+  border-radius: 10%;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-.signupButton:hover{
-    background-color: #0059b3;
-    color: white;
+.signupButton:hover {
+  background-color: #0059b3;
+  color: white;
 }
