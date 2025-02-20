@@ -15,22 +15,14 @@ function Signin() {
   function handleSignIn(e) {
     e.preventDefault();
     if (email && password != "") {
-      const passwordRegex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-      /*✅ 8 characters (minimum)
-        ✅ One uppercase letter
-        ✅ One lowercase letter
-        ✅ One number
-        ✅ One special character */
-      const isValidPassword = (password: string) =>
-        passwordRegex.test(password);
-      if (validator.isEmail(email) && isValidPassword(password)) {
-        console.log("sent for email and password");
-        navigate("/", { replace: true });
-      } else if (!validator.isEmail(email)) {
-        setAlert("Incompatible email");
-      } else if (!isValidPassword(password)) {
-        setAlert("Incompatible password");
+      if(validator.isStrongPassword(password,{minLength:8, minSymbols:1, minUppercase: 1, minNumbers:1})){
+          if(validator.isEmail(email)){
+            navigate('/', {replace: true})
+          }else{
+          setAlert("Please write a valid email!")
+          }
+      }else{
+        setAlert("The password is not in format!")
       }
     } else {
       setAlert("One of the fields is empty!");
@@ -42,8 +34,8 @@ function Signin() {
         <Navbar />
         <div className="signinPage">
           <div className="signinForm">
+          {alert === "" ? <></> : <Alert className="signinWarning" severity="warning">{alert}</Alert>}
             <h4>Sign In</h4>
-            {alert === "" ? <></> : <Alert severity="warning">{alert}</Alert>}
             <TextField
               id="email"
               label="Email"

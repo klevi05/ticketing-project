@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./components/home/home";
 import Signup from "./components/signup/signup";
 import Signin from "./components/signin/signin";
+import NotFound from "./components/404/notFound";
 //all the routes of the project will go under this file
 //follow the same structure
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
   );

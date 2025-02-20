@@ -1,0 +1,18 @@
+.notFoundPage{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.code{
+    font-size: 128px;
+}
+.homepageButton{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}

@@ -8,8 +8,7 @@
 .signinForm {
   height: 70vh;
   width: 25%;
-  border-radius: 10%;
-  padding: 5rem;
+  border-radius: 30px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   display: flex;
   justify-content: center;
@@ -22,11 +21,15 @@
   background-color: none;
   background-color: white;
   border: none;
-  border-radius: 10%;
+  border-radius: 10px;
   padding: 0.5rem 1rem 0.5rem 1rem;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .signinButton:hover {
-  background-color: #0059b3;
+  background-color: black;
   color: white;
+}
+.signinWarning{
+  position: absolute;
+  margin-bottom: 20rem;
 }

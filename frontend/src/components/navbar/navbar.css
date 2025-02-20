@@ -1,5 +1,37 @@
 .navbar{
     height: 10vh;
     width: 100%;
-    background-color: aliceblue;
+    background-color: black;
+    color: white;
+    display: grid;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    grid-template-columns: 60% 40%;
+}
+.logoText:hover{
+    cursor: pointer;
+}
+.actions{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+.signInNavigation{
+    color: white;
+    background-color: black;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.signUpNavigation{
+    color: white;
+    background-color: black;
+    border: none;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.signInNavigation:hover{
+    border: none;
+    border-bottom: 2px solid white;
 }
