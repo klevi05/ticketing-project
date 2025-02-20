@@ -2,18 +2,40 @@ import TextField from "@mui/material/TextField";
 import Navbar from "../navbar/navbar";
 import "./signup.css";
 import { useState } from "react";
+import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router";
+import validator from "validator";
+
 function Signup() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [team, setTeam] = useState("");
+  const [alert, setAlert] = useState("");
+
   function handleSignUp(e) {
     e.preventDefault();
-    if (name && email && password && team != "") {
-      console.log("sent");
-      navigate("/", { replace: true });
+    if (email && password != "") {
+      const passwordRegex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      /*✅ 8 characters (minimum)
+            ✅ One uppercase letter
+            ✅ One lowercase letter
+            ✅ One number
+            ✅ One special character */
+      const isValidPassword = (password: string) =>
+        passwordRegex.test(password);
+      if (validator.isEmail(email) && isValidPassword(password)) {
+        console.log("sent for email and password");
+        navigate("/", { replace: true });
+      } else if (!validator.isEmail(email)) {
+        setAlert("Incompatible email");
+      } else if (!isValidPassword(password)) {
+        setAlert("Incompatible password");
+      }
+    } else {
+      setAlert("One of the fields is empty!");
     }
   }
   return (
@@ -23,6 +45,7 @@ function Signup() {
         <div className="signupPage">
           <div className="signupForm">
             <h4>Sign Up</h4>
+            {alert === "" ? <></> : <Alert severity="warning">{alert}</Alert>}
             <TextField
               id="name"
               label="Name"
@@ -30,6 +53,7 @@ function Signup() {
               type="text"
               onChange={(e) => {
                 setName(e.target.value);
+                setAlert("");
               }}
             />
             <TextField
@@ -39,6 +63,7 @@ function Signup() {
               variant="standard"
               onChange={(e) => {
                 setEmail(e.target.value);
+                setAlert("");
               }}
             />
             <TextField
@@ -48,6 +73,7 @@ function Signup() {
               variant="standard"
               onChange={(e) => {
                 setPassword(e.target.value);
+                setAlert("");
               }}
             />
             <TextField
@@ -57,6 +83,7 @@ function Signup() {
               type="text"
               onChange={(e) => {
                 setTeam(e.target.value);
+                setAlert("");
               }}
             />
             <button
