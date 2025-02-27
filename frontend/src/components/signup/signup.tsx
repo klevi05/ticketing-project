@@ -4,6 +4,7 @@ import "./signup.css";
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router";
+import hashing from "../hashing/hashing";
 import validator from "validator";
 
 function Signup() {
@@ -19,7 +20,30 @@ function Signup() {
     if (email && password && name && team != "") {
         if(validator.isStrongPassword(password,{minLength:8, minSymbols:1, minUppercase: 1, minNumbers:1})){
            if(validator.isEmail(email)){
-              navigate('/', {replace: true})
+            try {
+              fetch(
+                import.meta.env.VITE_URL_SIGNUP, 
+                {mode: 'cors', method: 'POST', 
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                  'name': name,
+                  'email': email,
+                  'password': hashing(password),
+                  'team': team
+                })
+              }).then((res)=>{
+                 if(res.status === 200){
+                   navigate('/', {replace:true})
+                 }else if(res.status === 204){
+                  setAlert('Email already used!')
+                 }else{
+                  setAlert('Something went wrong!')
+                 }
+              })
+              
+            } catch (error) {
+              console.log(error)
+            }
            }else{
             setAlert("Please write a valid email!")
            }
