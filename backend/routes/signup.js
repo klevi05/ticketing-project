@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express();
 const Signup = require('../models/singup');
-const singup = require('../models/singup');
+//this route is used to save the user in the database
 router.post('/', async(req,res)=>{
     const signup = new Signup({
         name: req.body.name,
@@ -10,7 +10,7 @@ router.post('/', async(req,res)=>{
         team : req.body.team
     })
     try{
-        const userFindEmail = await singup.findOne({email: req.body.email})
+        const userFindEmail = await Signup.findOne({email: req.body.email})
         if(userFindEmail!= null){
             return res.sendStatus(204)
         }else{
