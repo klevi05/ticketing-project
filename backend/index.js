@@ -13,6 +13,12 @@ app.use(express.json())
 mongoose.connect(process.env.URL,{
     dbName: "Ticketing"
 })
+//fixes a cors problem
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+    });
 //Route to signup
 app.use('/signup', Signup);
 //Route to signin
