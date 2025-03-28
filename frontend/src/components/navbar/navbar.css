@@ -3,35 +3,165 @@
     width: 100%;
     background-color: black;
     color: white;
-    display: grid;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    grid-template-columns: 60% 40%;
+}
+nav ul{
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav li{
+    padding: 0 1rem;
+}
+
+nav li:first-child{
+    margin-right: auto;
 }
 .logoText:hover{
     cursor: pointer;
 }
-.actions{
-    display: flex;
-    justify-content: end;
-    gap: 2rem;
-}
-.signInNavigation{
-    color: white;
+.sidebar{
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 20rem;
+    z-index: 999;
     background-color: black;
-    border: none;
-    border-bottom: 2px solid black;
-    padding: 0.5rem 1rem 0.5rem 1rem;
+    backdrop-filter: blur(10px);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
 }
-.signUpNavigation{
-    color: white;
-    background-color: black;
-    border: none;
-    border: 2px solid white;
-    border-radius: 5px;
-    padding: 0.5rem 1rem 0.5rem 1rem;
+.sidebar.open {
+    transform: translateX(0);    
+    opacity: 1;
+    pointer-events: auto;
+  }
+.sidebar li{
+    width: 100%;
 }
-.signInNavigation:hover{
-    border: none;
-    border-bottom: 2px solid white;
+.sidebar .logoText{
+    display: none;
+}
+.sidebar .x-logo{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: auto;
+    cursor: pointer;
+}
+@media (max-width: 600px){
+    .hiddenElemnet{
+        display: none;
+    }
+    .sidebar{
+        width: 60%;
+    }
+    .sidebar li{
+        padding-top: 2rem;
+    }
+    .sidebar .x-logo{
+        padding-top: 0;
+    }
+    .signInNavigation{
+        width: 100%;
+        color: white;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid gray;
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+    .signUpNavigation{
+        width: 100%;
+        color: white;
+        background-color: transparent;
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        border: none;
+        border-bottom: 1px solid gray;
+        border-radius: 0;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+}
+@media only screen and (min-width: 601px){
+    .hiddenElemnet{
+        display: none;
+    }
+    .sidebar li{
+        padding-top: 2rem;
+    }
+    .sidebar .x-logo{
+        padding-top: 0;
+    }
+    .signInNavigation{
+        width: 100%;
+        color: white;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid gray;
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+    .signUpNavigation{
+        width: 100%;
+        color: white;
+        background-color: transparent;
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        border: none;
+        border-bottom: 1px solid gray;
+        border-radius: 0;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+}
+@media only screen and (min-width: 1024px){
+    .hiddenElemnet{
+        display: flex;
+    }
+    .burger-icon{
+        display: none;
+    }
+    .signInNavigation{
+        width: 7rem;
+        color: white;
+        background-color: black;
+        border: none;
+        font-size: 20px;
+        font-weight: 400;
+        border-bottom: 2px solid black;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+    .signUpNavigation{
+        width: 7rem;
+        color: white;
+        background-color: black;
+        border: none;
+        border: 2px solid white;
+        font-size: 20px;
+        font-weight: 400;
+        border-radius: 5px;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+    .signInNavigation:hover{
+        border: none;
+        border-bottom: 2px solid white;
+    }
 }
