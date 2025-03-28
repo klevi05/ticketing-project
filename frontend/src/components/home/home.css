@@ -5,6 +5,19 @@
     justify-content: center;
     align-items: center;
 }
-.welcomingText{
-    font-size: 64px;
+
+@media (max-width: 600px){
+    .welcomingText{
+        font-size: 44px;
+    }
+}
+@media only screen and (min-width: 601px){
+    .welcomingText{
+        font-size: 64px;
+    }
+}
+@media only screen and (min-width: 1024px){
+    .welcomingText{
+        font-size: 64px;
+    }
 }
