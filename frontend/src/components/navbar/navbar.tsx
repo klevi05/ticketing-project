@@ -42,7 +42,7 @@ function Navbar(){
             <div className='logo'>
                 <h4 className='logoText' onClick={()=>{navigate('/',{replace:true})}}>Ticketing System</h4>
             </div>
-            {loged===true?
+            {loged ?
                 <>
                 <div className='actions'>
                 <button onClick={handleLogOut} className='signUpNavigation'>Log Out</button>

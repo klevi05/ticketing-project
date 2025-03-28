@@ -55,7 +55,7 @@ function Signin() {
         <div className="signinPage">
           <div className="signinForm">
           {alert === "" ? <></> : <Alert className="signinWarning" severity="warning">{alert}</Alert>}
-            <h4>Sign In</h4>
+            <h4 className="siginLabel">Sign In</h4>
             <TextField
               id="email"
               label="Email"
