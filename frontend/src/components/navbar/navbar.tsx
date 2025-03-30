@@ -62,6 +62,9 @@ function Navbar(){
                         <button onClick={()=>{navigate('/', {replace:true})}} className='signInNavigation'>Home</button>
                     </li>
                     <li>
+                        <button onClick={()=>{navigate('/addNew', {replace:true})}} className='signInNavigation'>Add Ticket</button>
+                    </li>
+                    <li>
                         <button onClick={handleLogOut} className='signUpNavigation'>Log Out</button>
                     </li>
                 </>
@@ -84,6 +87,9 @@ function Navbar(){
             {
                 loged?
                 <>
+                    <li>
+                        <button onClick={()=>{navigate('/addNew', {replace:true})}} className='signInNavigation'>Add Ticket</button>
+                    </li>
                     <li className='hiddenElemnet'>
                         <button onClick={handleLogOut} className='signUpNavigation'>Log Out</button>
                     </li>
