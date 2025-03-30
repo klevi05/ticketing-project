@@ -65,8 +65,8 @@
 }
 @media only screen and (min-width: 1024px){
   .signupForm{
-    height: 70vh;
-    width: 20%;
+    height: 75vh;
+    width: 30%;
   }
   .signupButton{
     margin-top: 2rem;
@@ -74,6 +74,6 @@
     font-size: 18px;
   }
   .warnings{
-    margin-bottom: 30rem;
+    margin-bottom: 28rem;
   }
 }
