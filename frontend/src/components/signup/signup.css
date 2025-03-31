@@ -28,15 +28,20 @@
   padding: 0.5rem 1rem 0.5rem 1rem;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-.signupButton:hover {
-  background-color: white;
-  color: black;
+
+@media (max-width: 400px) {
+  .signupForm{
+    height: 80vh;
+    width: 70%;
+  }
+  .signupButton{
+    margin-top: 2rem;
+    width: 200px;
+    font-size: 18px;
+  }
+  
 }
-.warnings{
-  position: absolute;
-  margin-bottom: 26rem;
-}
-@media (max-width: 600px){
+@media only screen and (min-width: 401px){
   .signupForm{
     width: 80%;
   }
@@ -45,35 +50,30 @@
     width: 200px;
     font-size: 18px;
   }
-  .warnings{
-    margin-bottom: 30rem;
-  }
+  
 }
 @media only screen and (min-width: 601px){
   .signupForm{
     height: 60vh;
-    width: 45%;
+    width: auto;
+    padding: 5rem;
   }
   .signupButton{
     margin-top: 2rem;
     width: 200px;
     font-size: 18px;
   }
-  .warnings{
-    margin-bottom: 30rem;
-  }
+  
 }
 @media only screen and (min-width: 1024px){
   .signupForm{
     height: 75vh;
-    width: 30%;
+    width: auto;
   }
   .signupButton{
     margin-top: 2rem;
     width: 200px;
     font-size: 18px;
   }
-  .warnings{
-    margin-bottom: 28rem;
-  }
+  
 }

@@ -72,7 +72,7 @@ function Signup() {
         <Navbar />
         <div className="signupPage">
           <div className="signupForm">
-          {alert === "" ? <></> : <Alert className="warnings" severity="warning">{alert}</Alert>}
+          {alert === "" ? <></> : <Alert severity="warning">{alert}</Alert>}
             <h4>Sign Up</h4>
             <TextField
               id="name"
