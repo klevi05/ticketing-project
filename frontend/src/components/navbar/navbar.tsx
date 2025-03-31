@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './navbar.css'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 function Navbar(){
     const navigate = useNavigate();
     const [loged, setLoged] = useState(false);
@@ -87,8 +87,8 @@ function Navbar(){
             {
                 loged?
                 <>
-                    <li>
-                        <button onClick={()=>{navigate('/addNew', {replace:true})}} className='signInNavigation'>Add Ticket</button>
+                    <li className='hiddenElemnet'>
+                        <button onClick={()=>{navigate('/addNew', {replace:true})}} className='signInNavigation'>Add New</button>
                     </li>
                     <li className='hiddenElemnet'>
                         <button onClick={handleLogOut} className='signUpNavigation'>Log Out</button>
