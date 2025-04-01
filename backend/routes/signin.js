@@ -9,7 +9,7 @@ router.post('/', async (req,res)=>{
         const findUserbyEmail = await Signup.findOne({email: req.body.email})
         if(findUserbyEmail != null){
             if(bcrypt.compareSync(req.body.password, findUserbyEmail['password'])){
-                const token = jwt.sign({team: req.body.team},process.env.PRIVAT_KEY, {expiresIn: '1h'})
+                const token = jwt.sign({team: findUserbyEmail['team'], name: findUserbyEmail['name']},process.env.PRIVAT_KEY, {expiresIn: '1h'})
                 return res.json({token:token});
             }else{
                 return res.sendStatus(202);

@@ -50,7 +50,29 @@ function AddNew(){
     function handleAddNew(e){
         e.preventDefault();
         if(subject && team && status != ""){
-            console.log(subject , team, status)
+            try {
+                fetch(
+                  import.meta.env.VITE_ADDTICKET, 
+                  {mode: 'cors', method: 'POST', 
+                  headers:{'Content-Type':'application/json'},
+                  body: JSON.stringify({
+                    'subject': subject,
+                    'description': description,
+                    'team': team,
+                    'status': status
+                  })
+                }).then((res)=>{
+                  //check everythin and if any error set the proper alert message
+                   if(res.status === 200){
+                     navigate('/', {replace:true})
+                   }else if(res.status === 404){
+                    setAlert('Something went wrong!')
+                   }
+                })
+                
+              } catch (error) {
+                console.log(error)
+              }
         }else{
             setAlert('One of fields is empty')
         }
@@ -82,7 +104,7 @@ function AddNew(){
                         variant="standard"
                         type="text"
                         onChange={(e)=>{
-                            setSubject(e.target.value)
+                            setDescription(e.target.value)
                             setAlert('');
                         }}
                         />
