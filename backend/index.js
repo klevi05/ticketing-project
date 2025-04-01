@@ -2,6 +2,7 @@
 const Signup = require('./routes/signup')
 const Signin = require('./routes/signin')
 const verify = require('./routes/verify')
+const addNewTicket = require('./routes/addTicket')
 //libraries needed for the project
 const express = require('express')
 const cors = require('cors')
@@ -25,6 +26,8 @@ app.use('/signup', Signup);
 app.use('/signin', Signin);
 //Route to verify the jwt
 app.use('/verify', verify)
+//Route to add a new ticket to the database
+app.use('/addTicket', addNewTicket)
 //Open the conection for the server
 app.listen(5000,()=>{
     console.log('Server started!')
