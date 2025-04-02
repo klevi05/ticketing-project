@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './navbar.css'
-import { Link, useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 function Navbar(){
     const navigate = useNavigate();
     const [loged, setLoged] = useState(false);
@@ -50,6 +50,7 @@ function Navbar(){
     return(
         <>
         <nav className='navbar'>
+            {/* This navbar is used when the view is changed for tablet and for phones */}
             <ul className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
                     <li onClick={closeMenu} className='x-logo'>
                         <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
@@ -58,6 +59,7 @@ function Navbar(){
             {
                 loged? 
                 <>
+                    {/* This navbar is when the user is logged in*/}
                     <li>
                         <button onClick={()=>{navigate('/', {replace:true})}} className='signInNavigation'>Home</button>
                     </li>
@@ -70,6 +72,7 @@ function Navbar(){
                 </>
                 : 
                 <>
+                    {/* This navbar is user is anonymus*/}
                     <li>
                         <button onClick={()=>{navigate('/', {replace:true})}} className='signInNavigation'>Home</button>
                     </li>
@@ -82,11 +85,13 @@ function Navbar(){
                 </>
             }
             </ul>
+            {/* This navbar is used when the view is for a laptop or biger */}
             <ul>
                 <li><h4 className='logoText' onClick={()=>{navigate('/',{replace:true})}}>Ticketing System</h4></li>
             {
                 loged?
                 <>
+                    {/* This when the user is logged in*/}
                     <li className='hiddenElemnet'>
                         <button onClick={()=>{navigate('/addNew', {replace:true})}} className='signInNavigation'>Add New</button>
                     </li>
@@ -96,6 +101,7 @@ function Navbar(){
                 </>
                 :
                 <>
+                {/* This when the user is annonymus*/}
                 <li className='hiddenElemnet'>
                     <button onClick={()=>{navigate('/signin', {replace:true})}} className='signInNavigation'>Log In</button>
                 </li>
