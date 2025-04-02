@@ -1,6 +1,8 @@
 import './home.css';
 import Navbar from '../navbar/navbar';
+
 function Home(){
+    
     return(
         <>
         <div>

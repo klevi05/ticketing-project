@@ -18,4 +18,21 @@ const ticket = new mongoose.Schema({
         require: true
     }
 }, {timestamps:true})
+
+ticket.set('toJSON', {
+    transform: function (doc, ret) {
+        const createdAt = new Date(ret.createdAt);
+        const updatedAt = new Date(ret.updatedAt);
+
+        const pad = (n) => n < 10 ? '0' + n : n;
+
+        ret.createdAtFormatted = `${pad(createdAt.getHours())}:${pad(createdAt.getMinutes())}`;
+        ret.createdDateFormatted = `${pad(createdAt.getDate())}/${pad(createdAt.getMonth() + 1)}/${createdAt.getFullYear()}`;
+
+        ret.updatedAtFormatted = `${pad(updatedAt.getHours())}:${pad(updatedAt.getMinutes())}`;
+        ret.updatedDateFormatted = `${pad(updatedAt.getDate())}/${pad(updatedAt.getMonth() + 1)}/${updatedAt.getFullYear()}`;
+
+        return ret;
+    }
+});
 module.exports = mongoose.model("Ticket",ticket)
