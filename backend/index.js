@@ -3,6 +3,7 @@ const Signup = require('./routes/signup')
 const Signin = require('./routes/signin')
 const verify = require('./routes/verify')
 const addNewTicket = require('./routes/addTicket')
+const getTicketList = require('./routes/getTickets')
 //libraries needed for the project
 const express = require('express')
 const cors = require('cors')
@@ -28,6 +29,8 @@ app.use('/signin', Signin);
 app.use('/verify', verify)
 //Route to add a new ticket to the database
 app.use('/addTicket', addNewTicket)
+//route to retrive all the data from the lists
+app.use('/getTickets', getTicketList)
 //Open the conection for the server
 app.listen(5000,()=>{
     console.log('Server started!')
