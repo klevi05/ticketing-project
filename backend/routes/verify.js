@@ -2,7 +2,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken');
 const router = express()
 //function to verify that the token given is really a token
-const verifyJWT = (req,res,next)=>{
+const verifyJWT = (req,res, next)=>{
     const token = req.headers['x-access-token'];
     if(!token){
         return res.sendStatus(404)
@@ -11,7 +11,7 @@ const verifyJWT = (req,res,next)=>{
             if(err){
                 return res.sendStatus(404)
             }else{
-                next()
+                return res.send({team: decoded['team']})
             }
         })
     }

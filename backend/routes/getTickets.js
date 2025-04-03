@@ -3,8 +3,9 @@ const router = express();
 const Ticket = require('../models/ticket')
 //this router is used to return all the tickets     
 router.get('/', async (req, res)=>{
+    const team = req.headers['x-access-team'];
     try{
-        const ticketsList = await Ticket.find({});
+        const ticketsList = await Ticket.find({'team': team });
         return res.send(ticketsList)
     }catch(err){
         console.log(err)
