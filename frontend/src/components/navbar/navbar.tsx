@@ -8,7 +8,7 @@ function Navbar(){
     useEffect(()=>{//this ocours before the element is loaded to check for the jwt token
         const token = localStorage.getItem('token');
         if(token===null){
-            setLoged(false)
+            return;
         }else{
             fetch(//fetch in the backend and retrievethe information about the token
                 import.meta.env.VITE_VERIFY, 
