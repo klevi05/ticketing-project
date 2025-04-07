@@ -42,31 +42,35 @@ function EditModal({open, setOpen, ticket}: EditModalProps ){
     //function to edit and update the ticket
     function handleUpdate(){
         if(team != ticket?.team || description != ticket?.description || status != ticket?.status || subject != ticket?.subject ){
-            try {
-                fetch(
-                    import.meta.env.VITE_UPDATETICKETS, 
-                    {mode: 'cors', method: 'POST', 
-                    headers:{'Content-Type':'application/json'},
-                    body: JSON.stringify({
-                      '_id': ticket?._id,
-                      'subject': subject,
-                      'description': description,
-                      'team': team,
-                      'status': status
-                    })
-                  }).then((res)=>{
-                    //check everythin and if any error set the proper alert message
-                     if(res.status === 200){
-                       setAlert('The data succesfully updatet!');
-                       window.location.reload();
-                     }else if(res.status === 404){
-                      setAlert('The ticket is not found')
-                     }else if(res.status === 500){
-                      setAlert('Internal server Error 500!')
-                     }
-                  })
-            } catch (error) {
-                console.log(error)
+            if(subject && team && status != ''){
+                try {
+                    fetch(
+                        import.meta.env.VITE_UPDATETICKETS, 
+                        {mode: 'cors', method: 'POST', 
+                        headers:{'Content-Type':'application/json'},
+                        body: JSON.stringify({
+                          '_id': ticket?._id,
+                          'subject': subject,
+                          'description': description,
+                          'team': team,
+                          'status': status
+                        })
+                      }).then((res)=>{
+                        //check everythin and if any error set the proper alert message
+                         if(res.status === 200){
+                           setAlert('The data succesfully updatet!');
+                           window.location.reload();
+                         }else if(res.status === 404){
+                          setAlert('The ticket is not found')
+                         }else if(res.status === 500){
+                          setAlert('Internal server Error 500!')
+                         }
+                      })
+                } catch (error) {
+                    console.log(error)
+                }
+            }else{
+                setAlert('The required field should be not empty!')
             }
         }else{
             setAlert('The data has not changed!')
@@ -112,6 +116,7 @@ function EditModal({open, setOpen, ticket}: EditModalProps ){
                 variant='standard'
                 label='Subject'
                 type='text'
+                required
                 onChange={(e)=>{
                     setSubject(e.target.value);
                     setAlert('')
@@ -136,6 +141,7 @@ function EditModal({open, setOpen, ticket}: EditModalProps ){
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 value={status}
+                                required
                                 label="Status"
                                 onChange={handleChangeStatus}
                             >

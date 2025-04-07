@@ -5,7 +5,20 @@ import CircularProgress from '@mui/material/CircularProgress';
 import EditModal from './modal/editModal';
 import Box from '@mui/material/Box';
 import Alert from "@mui/material/Alert";
-function Home(){
+import Modal from '@mui/material/Modal';
+import { Button, Typography } from '@mui/material';
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+function Home(){      
     type TicketType = {
         _id: string;
         team: string;
@@ -13,13 +26,17 @@ function Home(){
         status: string;
         subject: string;
     };
+    type AlertSeverity = "error" | "warning" | "info" | "success";
     const [edit, setEdit] = useState(false);
     const [reload, setReload] = useState(false);
     const [ticketData, setTicketData]= useState<TicketType | null>(null);
     const [data, setData] = useState([])
+    const [ openModal, setOpenModal] = useState(false)
     const [loged, setLoged] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [alert, setAlert] = useState('')
+    const [alert, setAlert] = useState<[AlertSeverity, string] | []>([]);
+    const handleOpen = () => setOpenModal(true);
+    const handleClose = () => setOpenModal(false);
     function getTickets( team: string){
         fetch(//fetch in the backend and retrievethe information about the token
             import.meta.env.VITE_GETTICKETS, 
@@ -80,16 +97,22 @@ function Home(){
                     if(res.status === 200){
                         setReload(prev => !prev);
                     }else{
-                        setAlert('Iternal server error code 500')
+                        handleAlerts('warning','Iternal server error code 500')
                     }
                 })
+    }
+    function handleAlerts(severity: AlertSeverity, message:string){
+        setAlert([severity, message])
+        setTimeout(() => {
+            setAlert([]);
+        }, 3000);
     }
     return(
         <>
         <div>
             <Navbar/>
         </div>
-        {alert === "" ? <></> : <Alert severity="warning">{alert}</Alert>}
+        {alert.length === 0 ? <></> : <Alert severity={alert[0]}>{alert[1]}</Alert>}
         <div className='home'>
             {loading? 
             <div className='homeCircle'>
@@ -129,7 +152,29 @@ function Home(){
                             :
                             <> {
                                 tickets['status'] === 'Close'?
-                                <button onClick={()=>{handleButtonActions(tickets['_id'], 'Delete')}} className='closeTask'><h6>Delete</h6></button>:
+                                <>
+                                <button onClick={()=>{handleOpen()}} className='closeTask'><h6>Delete</h6></button>
+                                {openModal? 
+                                <>
+                                <Modal
+                                    open={openModal}
+                                    onClose={handleClose}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
+                                >
+                                    <Box sx={style}>
+                                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                        Are you sure you want to delete this ticket?
+                                    </Typography>
+                                    <Box sx={{display: 'flex', justifyContent:'flex-end',mt:2, gap:2}}>
+                                        <Button onClick={()=>{handleButtonActions(tickets['_id'], 'Delete'); handleAlerts('success', 'Ticket successfully deleted'); handleClose()}} variant='contained' color='error'> Delete </Button>
+                                        <Button onClick={handleClose} variant='contained' sx={{color: 'black', backgroundColor: 'lightGray'}}> Cancel</Button>
+                                    </Box>
+                                    </Box>
+                                </Modal>
+                                </> : <></>}
+                                </>
+                                :
                                 <button onClick={()=>{handleButtonActions(tickets['_id'], 'Close')}} className='closeTask'><h6>Close</h6></button>
                             }
                             </>
