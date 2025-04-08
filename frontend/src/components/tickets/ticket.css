@@ -58,6 +58,12 @@
     overflow: hidden;            
     text-overflow: ellipsis;   
 }
+.importTask{
+    padding-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+}
 @media (max-width: 600px){
     .ticketsList{
         height: auto;

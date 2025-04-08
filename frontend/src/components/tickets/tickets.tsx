@@ -8,6 +8,7 @@ import Alert from "@mui/material/Alert";
 import Modal from '@mui/material/Modal';
 import { Button, Typography } from '@mui/material';
 import { useNavigate } from "react-router";
+import ImportTickets from "../import/import";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -123,6 +124,11 @@ function Ticket(){
         </div>
          : 
         <>
+          <div style={{width: '100%', display:'flex', justifyContent:'center'}}>
+            <div className="importTask">
+              <ImportTickets/>
+            </div>
+          </div>
             {data.length === 0 ? <Alert severity='success'>Your team has finished all their tasks!</Alert> :
             <><div className='ticketsList'>
                 {[...data].reverse().map((tickets) => (
