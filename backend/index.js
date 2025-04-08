@@ -6,6 +6,8 @@ const addNewTicket = require('./routes/addTicket')
 const getTicketList = require('./routes/getTickets')
 const updateTicket = require('./routes/updateTickets')
 const ticketAction = require('./routes/ticketAction')
+const unsolvedTickets = require('./routes/getUnsolvedTickets')
+const imported = require('./routes/import')
 //libraries needed for the project
 const express = require('express')
 const cors = require('cors')
@@ -37,6 +39,10 @@ app.use('/getTickets', getTicketList)
 app.use('/updateTicket',updateTicket)
 //route used by the buttons on the ticket to update the status
 app.use('/ticketAction', ticketAction)
+//get the number of all unsolved tickets
+app.use('/getUnsolvedTIckets', unsolvedTickets)
+//route used to check the files that are imported
+app.use('/import', imported)
 //Open the conection for the server
 app.listen(5000,()=>{
     console.log('Server started!')

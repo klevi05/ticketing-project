@@ -1,9 +1,0 @@
-.tableBox{
-    height: 0vh;
-    display: flex;
-    justify-content: center;
-}
-.tableStyle{
-    width: 40%;
-    border-radius: 10px;
-}

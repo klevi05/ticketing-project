@@ -47,8 +47,7 @@ function AddNew(){
         setAlert('');
         setStatus(event.target.value);
     };
-    function handleAddNew(e){
-        e.preventDefault();
+    function handleAddNew(){
         if(subject && team && status != ""){
             try {
                 fetch(
@@ -141,9 +140,7 @@ function AddNew(){
                             </FormControl>
                         </Box>
                         <button
-                            onClick={(e) => {
-                                handleAddNew(e);
-                            }}
+                            onClick={handleAddNew}
                             className="signupButton"
                             >
                             Submit

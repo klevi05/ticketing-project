@@ -35,4 +35,4 @@ ticket.set('toJSON', {
         return ret;
     }
 });
-module.exports = mongoose.model("Ticket",ticket)
+module.exports = mongoose.models.Ticket || mongoose.model("Ticket", ticket);
