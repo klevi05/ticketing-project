@@ -1,5 +1,4 @@
 import { Button ,Box,Typography, Modal } from '@mui/material';
-import './summary.css';
 import { useState } from 'react';
 
 const style = {

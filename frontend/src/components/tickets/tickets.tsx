@@ -139,7 +139,7 @@ function Ticket(){
                     </div>
                     <h4 className='subject'>Subject: {tickets['subject']}</h4>
                     <h4>Status: {tickets['status']}</h4>
-                    <h4>{tickets['updatedAtFormatted']} {tickets['updatedDateFormatted']}</h4>
+                    <h4>{tickets['updatedDateFormatted']} {tickets['updatedAtFormatted']}</h4>
                     <div className='ticketActions'>
                       {tickets['status'] === 'New' ?
                         <>
